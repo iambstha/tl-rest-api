@@ -209,6 +209,24 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.EXPECTATION_FAILED);
     }
 
+    @ExceptionHandler(FileSizeExceededException.class)
+    public ResponseEntity<ApiResponse> handleFileSizeExceededException(FileSizeExceededException ex, WebRequest re) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getMessage());
+        ApiResponse error = new ApiResponse(StatusConstants.FAILED, "FILE_SIZE_EXCEEDED", details);
+        error.setStatusCode(HttpStatus.EXPECTATION_FAILED.value());
+        return new ResponseEntity<>(error, HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler(FileUploadException.class)
+    public ResponseEntity<ApiResponse> handleFileUploadException(FileUploadException ex, WebRequest re) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getMessage());
+        ApiResponse error = new ApiResponse(StatusConstants.FAILED, "FILE_UPLOAD_ERROR", details);
+        error.setStatusCode(HttpStatus.EXPECTATION_FAILED.value());
+        return new ResponseEntity<>(error, HttpStatus.EXPECTATION_FAILED);
+    }
+
     @ExceptionHandler(TimeoutException.class)
     public ResponseEntity<ApiResponse> handleTimeOutException(TimeoutException ex, WebRequest re) {
         List<String> details = new ArrayList<>();
