@@ -72,6 +72,19 @@ public class CommentResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
+    @Operation(summary = "Soft delete comment")
+    @DeleteMapping("/{commentId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> softDelete(@PathVariable("commentId") Long commentId){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.softdelete(commentId))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
 
 }
 

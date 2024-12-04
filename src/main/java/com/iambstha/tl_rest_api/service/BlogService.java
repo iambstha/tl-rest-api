@@ -3,6 +3,7 @@ package com.iambstha.tl_rest_api.service;
 import com.iambstha.tl_rest_api.dto.BlogReqDto;
 import com.iambstha.tl_rest_api.dto.BlogResDto;
 import com.iambstha.tl_rest_api.entity.Blog;
+import com.iambstha.tl_rest_api.entity.Comment;
 import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.BlogMapper;
@@ -72,6 +73,18 @@ public class BlogService {
                     .filter(blog -> !blog.isDeleted())
                     .map(blogMapper::toDto)
                     .toList();
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
+    public boolean softdelete(Long blogId) {
+        try{
+            Blog blog = blogRepository.findById(blogId)
+                    .orElseThrow(() -> new RecordNotFoundException("Blog with id " + blogId + " not found"));
+            blog.setDeleted(true);
+            blogRepository.save(blog);
+            return true;
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }

@@ -3088,3 +3088,182 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 2838426 milliseconds ago at 202
 2024-12-04T14:02:31.252+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=[CommentResDto(userId=1, blogId=1, commentId=2, comment=string), CommentResDto(userId=1, blogId=1, commentId=1, comment=string)])]
 2024-12-04T14:02:31.258+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
 2024-12-04T14:02:31.259+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}
+2024-12-04T14:03:20.515+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:03:20.540+05:45  INFO 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] c.i.t.security.JwtAuthorizationFilter    : Extracted roles: [ROLE_USER]
+2024-12-04T14:03:20.545+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/v1/api/comment", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:03:20.546+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.CommentResource#getAll()
+2024-12-04T14:03:20.549+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.method.HandlerMethod             : Arguments: []
+2024-12-04T14:03:20.821+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        c1_0.comment_id,
+        c1_0.blog_id,
+        c1_0.comment,
+        c1_0.created_by,
+        c1_0.created_ts,
+        c1_0.deleted,
+        c1_0.modified_by,
+        c1_0.modified_ts,
+        c1_0.user_id 
+    from
+        tl_comments c1_0
+2024-12-04T14:03:20.887+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:03:20.888+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=[CommentResDto(userId=1, blogId=1, commentId=2, comment=string), CommentResDto(userId=1, blogId=1, commentId=1, comment=string), CommentResDto(userId=1, blogId=2, commentId=3, comment=string)])]
+2024-12-04T14:03:20.896+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:03:20.899+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}
+2024-12-04T14:03:36.017+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:03:36.032+05:45  INFO 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] c.i.t.security.JwtAuthorizationFilter    : Extracted roles: [ROLE_USER]
+2024-12-04T14:03:36.033+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/v1/api/comment/blog/2", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:03:36.034+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.CommentResource#getAllForBlogId(Long)
+2024-12-04T14:03:36.035+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.method.HandlerMethod             : Arguments: [2]
+2024-12-04T14:03:36.037+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        b1_0.blog_id,
+        b1_0.created_by,
+        b1_0.created_ts,
+        b1_0.deleted,
+        b1_0.modified_by,
+        b1_0.modified_ts,
+        b1_0.post,
+        b1_0.sub_title,
+        b1_0.thumbnail,
+        b1_0.title,
+        b1_0.user_id 
+    from
+        tl_blogs b1_0 
+    where
+        b1_0.blog_id=?
+2024-12-04T14:03:36.047+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        c1_0.comment_id,
+        c1_0.blog_id,
+        c1_0.comment,
+        c1_0.created_by,
+        c1_0.created_ts,
+        c1_0.deleted,
+        c1_0.modified_by,
+        c1_0.modified_ts,
+        c1_0.user_id 
+    from
+        tl_comments c1_0 
+    where
+        c1_0.blog_id=?
+2024-12-04T14:03:36.055+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:03:36.055+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=[CommentResDto(userId=1, blogId=2, commentId=3, comment=string)])]
+2024-12-04T14:03:36.057+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:03:36.058+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}
+2024-12-04T14:03:39.621+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:03:39.654+05:45  INFO 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] c.i.t.security.JwtAuthorizationFilter    : Extracted roles: [ROLE_USER]
+2024-12-04T14:03:39.655+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/v1/api/comment/blog/3", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:03:39.656+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.CommentResource#getAllForBlogId(Long)
+2024-12-04T14:03:39.656+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.method.HandlerMethod             : Arguments: [3]
+2024-12-04T14:03:39.657+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        b1_0.blog_id,
+        b1_0.created_by,
+        b1_0.created_ts,
+        b1_0.deleted,
+        b1_0.modified_by,
+        b1_0.modified_ts,
+        b1_0.post,
+        b1_0.sub_title,
+        b1_0.thumbnail,
+        b1_0.title,
+        b1_0.user_id 
+    from
+        tl_blogs b1_0 
+    where
+        b1_0.blog_id=?
+2024-12-04T14:03:39.685+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.iambstha.tl_rest_api.exception.CustomExceptionHandler#handleAllExceptions(Exception, WebRequest)
+2024-12-04T14:03:39.686+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.method.HandlerMethod             : Arguments: [com.iambstha.tl_rest_api.exception.BadRequestException: Blog with id 3 not found, ServletWebRequest: uri=/v1/api/comment/blog/3;client=0:0:0:0:0:0:0:1;user=TL335390]
+2024-12-04T14:03:39.689+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:03:39.691+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=FAILED, statusCode=500, message=SERVER_ERROR, details=[Blog with id 3 not found], errorMessage=null, data=null)]
+2024-12-04T14:03:39.692+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.iambstha.tl_rest_api.exception.BadRequestException: Blog with id 3 not found]
+2024-12-04T14:03:39.695+05:45 TRACE 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:03:39.696+05:45 DEBUG 8390 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR, headers={masked}

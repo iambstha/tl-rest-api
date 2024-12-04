@@ -5,6 +5,7 @@ import com.iambstha.tl_rest_api.dto.CommentResDto;
 import com.iambstha.tl_rest_api.entity.Blog;
 import com.iambstha.tl_rest_api.entity.Comment;
 import com.iambstha.tl_rest_api.exception.BadRequestException;
+import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.CommentMapper;
 import com.iambstha.tl_rest_api.repository.CommentRepository;
 import com.iambstha.tl_rest_api.util.UserUtil;
@@ -65,6 +66,18 @@ public class CommentService {
                     .filter(comment -> !comment.isDeleted())
                     .map(commentMapper::toDto)
                     .toList();
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
+    public boolean softdelete(Long commentId) {
+        try{
+            Comment comment = commentRepository.findById(commentId)
+                    .orElseThrow(() -> new RecordNotFoundException("Comment with id " + commentId + " not found"));
+            comment.setDeleted(true);
+            commentRepository.save(comment);
+            return true;
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }
