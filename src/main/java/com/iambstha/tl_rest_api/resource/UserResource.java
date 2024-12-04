@@ -5,9 +5,11 @@ import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.*;
 import com.iambstha.tl_rest_api.service.UserService;
+import com.iambstha.tl_rest_api.validator.user.ValidOldPassword;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -184,7 +186,7 @@ public class UserResource {
     @PatchMapping("{userId}/change-password")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> changePassword(
-            @RequestBody PasswordChangeDto passwordChangeDto,
+            @ValidOldPassword(id = "userId") @Valid @RequestBody PasswordChangeDto passwordChangeDto,
             @PathVariable("userId") Long userId) {
 
         List<String> details = new ArrayList<>();
