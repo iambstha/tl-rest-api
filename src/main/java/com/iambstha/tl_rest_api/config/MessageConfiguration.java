@@ -35,4 +35,22 @@ public class MessageConfiguration {
         return messageSource;
     }
 
+    @Bean("blog")
+    MessageSource blogMessageSource() {
+        ReloadableResourceBundleMessageSource messageSource =
+                new ReloadableResourceBundleMessageSource();
+        messageSource.setUseCodeAsDefaultMessage(true);
+        messageSource.setBasename("classpath:/messages/blog/blog");
+        return messageSource;
+    }
+
+    @Bean("comment")
+    MessageSource commentMessageSource() {
+        ReloadableResourceBundleMessageSource messageSource =
+                new ReloadableResourceBundleMessageSource();
+        messageSource.setUseCodeAsDefaultMessage(true);
+        messageSource.setBasename("classpath:/messages/comment/comment");
+        return messageSource;
+    }
+
 }
