@@ -173,8 +173,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DpkAuthException.class)
-    public ResponseEntity<ApiResponse> handleDpkAuthException(DpkAuthException ex, WebRequest re) {
+    @ExceptionHandler(AuthException.class)
+    public ResponseEntity<ApiResponse> handleDpkAuthException(AuthException ex, WebRequest re) {
         List<String> details = new ArrayList<>();
         details.add(ex.getMessage());
         ApiResponse error = new ApiResponse(StatusConstants.FAILED, "AUTH_ERROR", details);
