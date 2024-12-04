@@ -32,6 +32,20 @@ public class CommentResource {
 
     private final Locale locale = LocaleContextHolder.getLocale();
 
+
+    @Operation(summary = "Add comment", description = "Add a comment.")
+    @PostMapping("/save")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> save(@RequestBody CommentReqDto commentReqDto){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.save(commentReqDto))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
     @Operation(summary = "Add comment", description = "Add a comment.")
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
@@ -46,17 +60,18 @@ public class CommentResource {
     }
 
     @Operation(summary = "Add comment", description = "Add a comment.")
-    @PostMapping("/save")
+    @GetMapping("/blog/{blogId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<ApiResponse> save(@RequestBody CommentReqDto commentReqDto){
+    public ResponseEntity<ApiResponse> getAllForBlogId(@PathVariable("blogId") Long blogId){
         ApiResponse apiResponse = ApiResponse.builder()
-                .data(service.save(commentReqDto))
+                .data(service.getAllForBlogId(blogId))
                 .statusCode(200)
                 .message("creation.success")
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
+
 
 }
 

@@ -4,6 +4,7 @@ import com.iambstha.tl_rest_api.dto.BlogReqDto;
 import com.iambstha.tl_rest_api.dto.BlogResDto;
 import com.iambstha.tl_rest_api.entity.Blog;
 import com.iambstha.tl_rest_api.exception.BadRequestException;
+import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.BlogMapper;
 import com.iambstha.tl_rest_api.repository.BlogRepository;
 import com.iambstha.tl_rest_api.util.UserUtil;
@@ -45,9 +46,35 @@ public class BlogService {
 
     public List<BlogResDto> getAll() {
         try{
-            return blogRepository.findAll().stream().map(blogMapper::toDto).toList();
+            return blogRepository.findAll()
+                    .stream()
+                    .filter(blog -> !blog.isDeleted())
+                    .map(blogMapper::toDto)
+                    .toList();
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }
     }
+
+    public Blog getBlogActualById(Long blogId) {
+        try{
+            return blogRepository.findById(blogId)
+                    .orElseThrow(() -> new RecordNotFoundException("Blog with id " + blogId + " not found"));
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
+    public List<BlogResDto> getLoggedInUserBlogs() {
+        try{
+            List<Blog> blogs = blogRepository.findByUser(userService.getUserActualById(UserUtil.getUserId()));
+            return blogs.stream()
+                    .filter(blog -> !blog.isDeleted())
+                    .map(blogMapper::toDto)
+                    .toList();
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
 }

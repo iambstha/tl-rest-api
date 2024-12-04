@@ -32,6 +32,20 @@ public class BlogResource {
 
     private final Locale locale = LocaleContextHolder.getLocale();
 
+
+    @Operation(summary = "Add blog", description = "Add a blog.")
+    @PostMapping("/save")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> save(@RequestBody BlogReqDto blogReqDto){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.save(blogReqDto))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
     @Operation(summary = "Add comment", description = "Add a comment.")
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
@@ -45,17 +59,18 @@ public class BlogResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
-    @Operation(summary = "Add blog", description = "Add a blog.")
-    @PostMapping("/save")
+    @Operation(summary = "Fetch logged in user blog posts")
+    @GetMapping("/user")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<ApiResponse> save(@RequestBody BlogReqDto blogReqDto){
+    public ResponseEntity<ApiResponse> getByLoggedInUser(){
         ApiResponse apiResponse = ApiResponse.builder()
-                .data(service.save(blogReqDto))
+                .data(service.getLoggedInUserBlogs())
                 .statusCode(200)
                 .message("creation.success")
                 .build();
 
-         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
+
 
 }

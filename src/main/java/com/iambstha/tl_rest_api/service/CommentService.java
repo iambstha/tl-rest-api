@@ -2,6 +2,7 @@ package com.iambstha.tl_rest_api.service;
 
 import com.iambstha.tl_rest_api.dto.CommentReqDto;
 import com.iambstha.tl_rest_api.dto.CommentResDto;
+import com.iambstha.tl_rest_api.entity.Blog;
 import com.iambstha.tl_rest_api.entity.Comment;
 import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.mapper.CommentMapper;
@@ -27,6 +28,9 @@ public class CommentService {
     private final UserService userService;
 
     @Autowired
+    private final BlogService blogService;
+
+    @Autowired
     private final CommentMapper commentMapper;
 
     public CommentResDto save(CommentReqDto commentReqDto) {
@@ -43,9 +47,27 @@ public class CommentService {
 
     public List<CommentResDto> getAll() {
         try{
-            return commentRepository.findAll().stream().map(commentMapper::toDto).toList();
+            return commentRepository.findAll()
+                    .stream()
+                    .filter(comment -> !comment.isDeleted())
+                    .map(commentMapper::toDto)
+                    .toList();
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }
     }
+
+    public List<CommentResDto> getAllForBlogId(Long blogId) {
+        try{
+            Blog blog = blogService.getBlogActualById(blogId);
+            List<Comment> comments = commentRepository.findByBlog(blog);
+            return comments.stream()
+                    .filter(comment -> !comment.isDeleted())
+                    .map(commentMapper::toDto)
+                    .toList();
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
 }

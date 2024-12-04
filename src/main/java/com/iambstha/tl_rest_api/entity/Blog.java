@@ -32,6 +32,9 @@ public class Blog extends BaseEntity {
     @Column(name = "post", columnDefinition = "TEXT")
     private String post;
 
+    @Column(name = "deleted")
+    private boolean deleted;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @JsonIgnore
