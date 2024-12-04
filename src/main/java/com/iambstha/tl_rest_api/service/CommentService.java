@@ -71,13 +71,26 @@ public class CommentService {
         }
     }
 
+    public Comment getCommentActualById(Long commentId) {
+        try{
+            return commentRepository.findById(commentId)
+                    .orElseThrow(() -> new RecordNotFoundException("Comment with id " + commentId + " not found"));
+        }catch (Exception e){
+            throw new BadRequestException(e.getMessage());
+        }
+    }
+
     public boolean softdelete(Long commentId) {
         try{
-            Comment comment = commentRepository.findById(commentId)
-                    .orElseThrow(() -> new RecordNotFoundException("Comment with id " + commentId + " not found"));
-            comment.setDeleted(true);
-            commentRepository.save(comment);
-            return true;
+
+            Comment comment = getCommentActualById(commentId);
+            if(UserUtil.isAdmin() || comment.getUser() == userService.getUserActualById(UserUtil.getUserId())){
+                comment.setDeleted(true);
+                commentRepository.save(comment);
+                return true;
+            }else{
+                throw new BadRequestException("Cannot delete the comment");
+            }
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }

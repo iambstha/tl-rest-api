@@ -80,11 +80,14 @@ public class BlogService {
 
     public boolean softdelete(Long blogId) {
         try{
-            Blog blog = blogRepository.findById(blogId)
-                    .orElseThrow(() -> new RecordNotFoundException("Blog with id " + blogId + " not found"));
-            blog.setDeleted(true);
-            blogRepository.save(blog);
-            return true;
+            Blog blog =getBlogActualById(blogId);
+            if(UserUtil.isAdmin() || blog.getUser() == userService.getUserActualById(UserUtil.getUserId())){
+                blog.setDeleted(true);
+                blogRepository.save(blog);
+                return true;
+            }else{
+                throw new BadRequestException("Cannot delete the blog");
+            }
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());
         }
