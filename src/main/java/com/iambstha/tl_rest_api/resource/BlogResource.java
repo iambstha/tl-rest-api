@@ -2,6 +2,7 @@ package com.iambstha.tl_rest_api.resource;
 
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.BlogReqDto;
+import com.iambstha.tl_rest_api.dto.DocumentResDto;
 import com.iambstha.tl_rest_api.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -10,12 +11,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Locale;
 
 @Tag(name = "Blog Management")
@@ -72,6 +89,20 @@ public class BlogResource {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
+
+    @Operation(summary = "Fetch blog post by id")
+    @GetMapping("/{blogId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> getByBlogId(@PathVariable("blogId") Long blogId){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.getBlogActualById(blogId))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
 
     @Operation(summary = "Update blog")
     @PutMapping("/{blogId}")

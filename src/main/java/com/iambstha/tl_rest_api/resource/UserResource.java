@@ -1,9 +1,8 @@
 package com.iambstha.tl_rest_api.resource;
 
-import com.iambstha.tl_rest_api.constant.AppConstant;
-import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.*;
+import com.iambstha.tl_rest_api.exception.AuthException;
 import com.iambstha.tl_rest_api.service.UserService;
 import com.iambstha.tl_rest_api.validator.user.ValidOldPassword;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -28,8 +26,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 @Tag(name = "User Management", description = "APIs related to managing users, including fetching, updating, and deleting user data.")
@@ -60,21 +56,14 @@ public class UserResource {
             @RequestParam(name = "pageSize", defaultValue = "5", required = false) int pageSize
     ) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
 
-        Page<UserResDto> userResDtos = userService.getAllUsers(pageable);
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(userService.getAllUsers(pageable))
+                .statusCode(200)
+                .message("fetch.success")
+                .build();
 
-        if (!userResDtos.isEmpty()) {
-            response.setStatus(StatusConstants.SUCCESS);
-            response.setData(userResDtos);
-            response.setStatusCode(200);
-            response.setMessage(messageSource.getMessage("fetch_success", null, locale));
-        } else {
-            response.setMessage(messageSource.getMessage("fetch_failed", null, locale));
-        }
-
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
     }
 
@@ -82,75 +71,50 @@ public class UserResource {
     @GetMapping("/{userId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> getUserById(@PathVariable("userId") Long userId) {
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
 
-        UserResDto userResDtos = userService.getUserById(userId);
-        if (userResDtos.getUserId() != 0) {
-            response.setData(userResDtos);
-            response.setStatus(StatusConstants.SUCCESS);
-            response.setStatusCode(200);
-            response.setMessage(messageSource.getMessage("fetch_success", null, locale));
-        } else {
-            response.setMessage(messageSource.getMessage("fetch_failed", null, locale));
-        }
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(userService.getUserById(userId))
+                .statusCode(200)
+                .message("fetch.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
     }
 
     @Operation(summary = "Add user", description = "Save a new user")
     @PostMapping("/save")
     public ResponseEntity<ApiResponse> createUser(@RequestBody UserReqDto userReqDto) {
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
 
-        try {
-            UserResDto userResDto = userService.createUser(userReqDto);
-            if (userResDto.getUserId() > 0) {
-                response.setStatus(StatusConstants.SUCCESS);
-                response.setStatusCode(200);
-                response.setMessage(messageSource.getMessage("creation_success", null, locale));
-                response.setData(userResDto);
-            } else {
-                response.setMessage(messageSource.getMessage("creation_failed", null, locale));
-            }
-        } catch (Exception e) {
-            response.setErrorMessage(e.getMessage());
-        }
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(userService.createUser(userReqDto))
+                .statusCode(201)
+                .message("creation.success")
+                .build();
 
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
 
     }
 
     @Operation(summary = "User log in", description = "User log in")
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse> login(
-            @RequestBody LoginReqDto loginReqDto,
-            HttpServletRequest request) {
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
+    public ResponseEntity<ApiResponse> login(@RequestBody LoginReqDto loginReqDto, HttpServletRequest request) {
 
         try {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginReqDto.getUsername(), loginReqDto.getPassword()));
             if (authentication.isAuthenticated()) {
-                LoginTokenDto loginTokenDto = userService.login(loginReqDto, request);
-                if (loginTokenDto.getToken() != null) {
-                    response.setStatus(StatusConstants.SUCCESS);
-                    response.setStatusCode(200);
-                    response.setMessage(messageSource.getMessage("login_success", null, locale));
-                    response.setData(loginTokenDto);
-                } else {
-                    response.setMessage(messageSource.getMessage("user_not_active", null, locale));
-                }
+                ApiResponse apiResponse = ApiResponse.builder()
+                        .data(userService.login(loginReqDto, request))
+                        .statusCode(200)
+                        .message("login.success")
+                        .build();
+
+                return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
             } else {
-                response.setMessage(messageSource.getMessage("username_password_not_matched", null, locale));
+                throw new AuthException("Username or password mismatch");
             }
         } catch (Exception e) {
-            response.setErrorMessage(e.getMessage());
-            response.setMessage(messageSource.getMessage("login_failed", null, locale));
-            response.setStatusCode(400);
+            throw new AuthException("Unauthorized access");
         }
-
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
 
     }
 
@@ -158,27 +122,15 @@ public class UserResource {
     @Operation(summary = "Update user", description = "Update user by userId")
     @PutMapping("/{userId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<ApiResponse> updateUser(
-            @PathVariable Long userId,
-            @RequestBody UserReqDto userReqDto) {
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
+    public ResponseEntity<ApiResponse> updateUser(@PathVariable Long userId, @RequestBody UserReqDto userReqDto) {
 
-        try {
-            UserResDto userResDto = userService.updateUser(userId, userReqDto);
-            if (userResDto.getUserId() > 0) {
-                response.setStatusCode(200);
-                response.setData(userResDto);
-                response.setStatus(StatusConstants.SUCCESS);
-                response.setMessage(messageSource.getMessage("update_success", new Object[]{userId}, locale));
-            } else {
-                response.setMessage(messageSource.getMessage("update_failed", new Object[]{userId}, locale));
-            }
-        } catch (Exception e) {
-            response.setErrorMessage(e.getMessage());
-        }
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(userService.updateUser(userId, userReqDto))
+                .statusCode(200)
+                .message("update.success")
+                .build();
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
     }
 
@@ -189,24 +141,13 @@ public class UserResource {
             @ValidOldPassword(id = "userId") @Valid @RequestBody PasswordChangeDto passwordChangeDto,
             @PathVariable("userId") Long userId) {
 
-        List<String> details = new ArrayList<>();
-        ApiResponse response = new ApiResponse(StatusConstants.FAILED, 400, AppConstant.DEFAULT_ERROR, null, null, null);
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(userService.changePassword(passwordChangeDto, userId))
+                .statusCode(200)
+                .message("update.success")
+                .build();
 
-        if (passwordChangeDto.getNewPassword().equals(passwordChangeDto.getNewPasswordAgain())) {
-            UserResDto userResDto = userService.changePassword(passwordChangeDto, userId);
-            if (userResDto.getUserId() > 0) {
-                response.setStatus(StatusConstants.SUCCESS);
-                response.setStatusCode(200);
-                response.setMessage(messageSource.getMessage("password_change_success", null, locale));
-            } else {
-                response.setMessage(messageSource.getMessage("password_change_failed", null, locale));
-            }
-        } else {
-            response.setMessage(messageSource.getMessage("password_not_matched", null, locale));
-            response.setStatusCode(400);
-        }
-
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
     }
 
