@@ -8,6 +8,7 @@ import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.BlogMapper;
 import com.iambstha.tl_rest_api.repository.BlogRepository;
+import com.iambstha.tl_rest_api.util.GeneralUtil;
 import com.iambstha.tl_rest_api.util.UserUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -78,7 +79,18 @@ public class BlogService {
         }
     }
 
-    public boolean softdelete(Long blogId) {
+    public BlogResDto update(Long blogId, BlogReqDto blogReqDto) {
+
+        Blog existingBlog = getBlogActualById(blogId);
+        blogMapper.updateBlogFromDto(blogReqDto, existingBlog);
+        existingBlog.setModifiedBy(UserUtil.getUserId());
+        existingBlog.setModifiedTs(GeneralUtil.getCurrentTs());
+
+        return blogMapper.toDto(blogRepository.save(existingBlog));
+
+    }
+
+    public boolean softDelete(Long blogId) {
         try{
             Blog blog =getBlogActualById(blogId);
             if(UserUtil.isAdmin() || blog.getUser() == userService.getUserActualById(UserUtil.getUserId())){

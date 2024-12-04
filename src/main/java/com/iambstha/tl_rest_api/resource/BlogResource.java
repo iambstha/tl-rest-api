@@ -72,12 +72,26 @@ public class BlogResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
-    @Operation(summary = "Soft delete comment")
+    @Operation(summary = "Update blog")
+    @PutMapping("/{blogId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> update(@PathVariable("blogId") Long blogId, @RequestBody BlogReqDto blogReqDto){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.update(blogId, blogReqDto))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
+
+    @Operation(summary = "Soft delete blog")
     @DeleteMapping("/{blogId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> softDelete(@PathVariable("blogId") Long blogId){
         ApiResponse apiResponse = ApiResponse.builder()
-                .data(service.softdelete(blogId))
+                .data(service.softDelete(blogId))
                 .statusCode(200)
                 .message("creation.success")
                 .build();

@@ -6,10 +6,7 @@ import com.iambstha.tl_rest_api.dto.CommentResDto;
 import com.iambstha.tl_rest_api.entity.Blog;
 import com.iambstha.tl_rest_api.entity.Comment;
 import com.iambstha.tl_rest_api.entity.User;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +22,10 @@ public interface BlogMapper {
     @Mapping(target = "blogId", ignore = true)
     @Mapping(target = "user", source = "userId")
     Blog toEntity(BlogReqDto blogReqDto);
+
+    @Mapping(target = "blogId", ignore = true)
+    void updateBlogFromDto(BlogReqDto blogReqDto, @MappingTarget Blog existingBlog);
+
 
     default User mapUser(Long userId) {
         if (userId == null) {

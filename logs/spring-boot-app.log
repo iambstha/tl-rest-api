@@ -3904,3 +3904,512 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 2838426 milliseconds ago at 202
 2024-12-04T14:10:30.430+05:45 TRACE 8845 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=[BlogResDto(blogId=2, userId=1, title=string, subTitle=string, post=string, comments=[CommentResDto(userId=1, blogId=2, commentId=3, comment=string)])])]
 2024-12-04T14:10:30.431+05:45 TRACE 8845 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
 2024-12-04T14:10:30.432+05:45 DEBUG 8845 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}
+2024-12-04T14:24:40.390+05:45  INFO 8845 --- [tl-rest-api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04T14:24:40.431+05:45  INFO 8845 --- [tl-rest-api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-04T14:24:40.444+05:45  INFO 8845 --- [tl-rest-api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-04T14:24:49.560+05:45  INFO 9275 --- [tl-rest-api] [main] c.i.tl_rest_api.TlRestApiApplication     : Starting TlRestApiApplication using Java 22.0.2 with PID 9275 (/Users/smartsolution/Documents/Personal/learn/learn_java/Tree Leaf/tl-rest-api/target/classes started by smartsolution in /Users/smartsolution/Documents/Personal/learn/learn_java/Tree Leaf/tl-rest-api)
+2024-12-04T14:24:49.564+05:45  INFO 9275 --- [tl-rest-api] [main] c.i.tl_rest_api.TlRestApiApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-12-04T14:24:51.872+05:45  INFO 9275 --- [tl-rest-api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04T14:24:52.045+05:45  INFO 9275 --- [tl-rest-api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 4 JPA repository interfaces.
+2024-12-04T14:24:53.384+05:45  INFO 9275 --- [tl-rest-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-04T14:24:53.406+05:45  INFO 9275 --- [tl-rest-api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-04T14:24:53.407+05:45  INFO 9275 --- [tl-rest-api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-12-04T14:24:53.516+05:45  INFO 9275 --- [tl-rest-api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-04T14:24:53.516+05:45  INFO 9275 --- [tl-rest-api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3786 ms
+2024-12-04T14:24:54.610+05:45  INFO 9275 --- [tl-rest-api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04T14:24:54.658+05:45  INFO 9275 --- [tl-rest-api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-04T14:24:55.038+05:45  INFO 9275 --- [tl-rest-api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@70485aa
+2024-12-04T14:24:55.041+05:45  INFO 9275 --- [tl-rest-api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-04T14:24:57.422+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_blogs 
+       alter column post set data type TEXT
+2024-12-04T14:24:57.429+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_blogs 
+       alter column sub_title set data type TEXT
+2024-12-04T14:24:57.433+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_blogs 
+       alter column title set data type TEXT
+2024-12-04T14:24:57.438+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_comments 
+       alter column comment set data type TEXT
+2024-12-04T14:24:57.443+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_refresh_token 
+       alter column refresh_token set data type text
+2024-12-04T14:24:57.447+05:45 DEBUG 9275 --- [tl-rest-api] [main] org.hibernate.SQL                        : 
+    alter table if exists tl_refresh_token 
+       alter column token set data type text
+2024-12-04T14:24:57.618+05:45  INFO 9275 --- [tl-rest-api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04T14:24:58.859+05:45  INFO 9275 --- [tl-rest-api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04T14:24:59.187+05:45  INFO 9275 --- [tl-rest-api] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04T14:24:59.189+05:45  WARN 9275 --- [tl-rest-api] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04T14:24:59.420+05:45  WARN 9275 --- [tl-rest-api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04T14:24:59.697+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.i.t.r.BlogResource:
+	{PUT [/v1/api/blog/{blogId}]}: update(Long,BlogReqDto)
+	{POST [/v1/api/blog/save]}: save(BlogReqDto)
+	{GET [/v1/api/blog]}: getAll()
+	{DELETE [/v1/api/blog/{blogId}]}: softDelete(Long)
+	{GET [/v1/api/blog/user]}: getByLoggedInUser()
+2024-12-04T14:24:59.712+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.i.t.r.CommentResource:
+	{PUT [/v1/api/comment/{commentId}]}: update(Long,CommentReqDto)
+	{POST [/v1/api/comment/save]}: save(CommentReqDto)
+	{GET [/v1/api/comment]}: getAll()
+	{DELETE [/v1/api/comment/{commentId}]}: softDelete(Long)
+	{GET [/v1/api/comment/blog/{blogId}]}: getAllForBlogId(Long)
+2024-12-04T14:24:59.716+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.i.t.r.RefreshTokenResource:
+	{POST [/v1/api/refresh-token]}: getTokens(RefreshTokenDto,HttpServletRequest)
+2024-12-04T14:24:59.722+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.i.t.r.UserResource:
+	{POST [/v1/api/user/login]}: login(LoginReqDto,HttpServletRequest)
+	{GET [/v1/api/user]}: getAllUsers(int,int)
+	{GET [/v1/api/user/{userId}]}: getUserById(Long)
+	{POST [/v1/api/user/save]}: createUser(UserReqDto)
+	{PUT [/v1/api/user/{userId}]}: updateUser(Long,UserReqDto)
+	{PATCH [/v1/api/user/{userId}/change-password]}: changePassword(PasswordChangeDto,Long)
+2024-12-04T14:24:59.760+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2024-12-04T14:24:59.788+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-12-04T14:24:59.791+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-12-04T14:24:59.794+05:45 TRACE 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-12-04T14:24:59.798+05:45 DEBUG 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 23 mappings in 'requestMappingHandlerMapping'
+2024-12-04T14:24:59.822+05:45 DEBUG 9275 --- [tl-rest-api] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-12-04T14:25:00.046+05:45 TRACE 9275 --- [tl-rest-api] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-12-04T14:25:00.074+05:45 TRACE 9275 --- [tl-rest-api] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-12-04T14:25:00.075+05:45 TRACE 9275 --- [tl-rest-api] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-04T14:25:00.076+05:45 TRACE 9275 --- [tl-rest-api] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-12-04T14:25:00.076+05:45 TRACE 9275 --- [tl-rest-api] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-12-04T14:25:00.077+05:45 DEBUG 9275 --- [tl-rest-api] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-12-04T14:25:00.173+05:45  INFO 9275 --- [tl-rest-api] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@215efb16, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@173da924, org.springframework.security.web.context.SecurityContextHolderFilter@78fd1179, org.springframework.security.web.header.HeaderWriterFilter@696d28ee, org.springframework.web.filter.CorsFilter@1a9e2c3b, org.springframework.security.web.authentication.logout.LogoutFilter@65011123, com.iambstha.tl_rest_api.security.JwtAuthorizationFilter@68908be7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e08ed28, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32aa27a7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f92e5eb, org.springframework.security.web.session.SessionManagementFilter@98c4a8b, org.springframework.security.web.access.ExceptionTranslationFilter@57f83dc7, org.springframework.security.web.access.intercept.AuthorizationFilter@78c9c38a]
+2024-12-04T14:25:00.439+05:45 DEBUG 9275 --- [tl-rest-api] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-04T14:25:00.499+05:45 DEBUG 9275 --- [tl-rest-api] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-04T14:25:00.948+05:45  INFO 9275 --- [tl-rest-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04T14:25:00.966+05:45  INFO 9275 --- [tl-rest-api] [main] c.i.tl_rest_api.TlRestApiApplication     : Started TlRestApiApplication in 12.991 seconds (process running for 14.168)
+2024-12-04T14:25:10.666+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.667+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-04T14:25:10.668+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.multipart.support.StandardServletMultipartResolver@9677f54
+2024-12-04T14:25:10.670+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@27aa0720
+2024-12-04T14:25:10.670+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.theme.FixedThemeResolver@206a465f
+2024-12-04T14:25:10.672+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected DefaultRequestToViewNameTranslator
+2024-12-04T14:25:10.673+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected SessionFlashMapManager
+2024-12-04T14:25:10.674+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-04T14:25:10.674+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-12-04T14:25:10.700+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.726+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.731+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.731+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.779+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:10.793+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:10.797+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:10.879+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.880+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.881+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.881+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.882+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**, /**]
+2024-12-04T14:25:10.882+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:10.888+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.889+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**, /**]
+2024-12-04T14:25:10.889+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.889+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.891+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.892+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.892+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.892+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.894+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.893+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:10.895+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.896+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.896+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.898+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:10.899+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:10.900+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:10.902+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:10.905+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:10.905+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:10.913+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:10.915+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:10.923+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:10.966+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:10.982+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:11.078+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:11.080+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:11.127+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2024-12-04T14:25:11.129+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:11.131+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:11.554+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:11.555+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:11.557+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns [/swagger-ui*/**, /**]
+2024-12-04T14:25:11.557+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]] and 4 interceptors
+2024-12-04T14:25:11.557+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:11.558+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-12-04T14:25:11.558+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=-1
+2024-12-04T14:25:11.560+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:11.562+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:11.587+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.method.HandlerMethod             : Arguments: [SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@2567c9f9]]
+2024-12-04T14:25:11.596+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-12-04T14:25:11.598+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-redirect.html, url=/v3/api-docs, validatorUrl=}]
+2024-12-04T14:25:11.612+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:11.613+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:11.759+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:11.760+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-12-04T14:25:11.819+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.method.HandlerMethod             : Arguments: [SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@2b6ee78d], /v3/api-docs, en_US]
+2024-12-04T14:25:13.386+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1562 ms
+2024-12-04T14:25:13.422+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-12-04T14:25:13.436+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 102, 111, 34, 58, 123, 34, 116, 105, 116, 108, 101, 34, 58, 34, 84, 114, 101, 101, 32, 76, 101, 97, 102, 32, 65, 80, 73, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 32, 65, 80, 73, 32, 102, 111, 114, 32, 84, 114, 101, 101, 32, 76, 101, 97, 102, 32, 115, 101, 114, 118, 105, 99, 101, 115, 46, 34, 44, 34, 116, 101, 114, 109, 115, 79, 102, 83, 101, 114, 118, 105, 99, 101, 34, 58, 34, 47, 118, 49, 47, 97, 112, 105, 47, 112, 117, 98, 108, 105, 99, 47, 116, 111, 115, 34, 44, 34, 99, 111, 110, 116, 97, 99, 116, 34, 58, 123, 34, 110, 97, 109, 101, 34, 58, 34, 66, 105, 115, 104, 97, 108, 32, 83, 104, 114, 101, 115, 116, 104, 97, 34, 44, 34, 117, 114, 108, 34, 58, 34, 104, 116, 116, 112, 115, 58, 47, 47, 98, 105, 115, 104, 97, 108, 45, 115, 104, 114, 101, 115, 116, 104, 97, 46, 99, 111, 109, 46, 110, 112, 34, 44, 34, 101, 109, 97, 105, 108, 34, 58, 34, 105, 97, 109, 98, 115, 116, 104, 97, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109, 34, 125, 44, 34, 108, 105, 99, 101, 110, 115, 101, 34, 58, 123, 34, 110, 97, 109, 101, 34, 58, 34, 65, 112, 97, 99, 104, 101, 32, 50, 46, 48, 34, 44, 34, 117, 114, 108, 34, 58, 34, 104, 116, 116, 112, 115, 58, 47, 47, 119, 119, 119, 46, 97, 112, 97, 99, 104, 101, 46, 111, 114, 103, 47, 108, 105, 99, 101, 110, 115, 101, 115, 47, 76, 73, 67, 69, 78, 83, 69, 45, 50, 46, 48, 46, 104, 116, 109, 108, 34, 125, 44, 34, 118, 101, 114, 115, 105, 111, 110, 34, 58, 34, 118, 48, 46, 48, 46, 49, 34, 125, 44, 34, 115, 101, 114, 118, 101, 114, 115, 34, 58, 91, 123, 34, 117, 114, 108, 34, 58, 34, 104, 116, 116, 112, 58, 47, 47, 108, 111, 99, 97, 108, 104, 111, 115, 116, 58, 56, 48, 56, 48, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 71, 101, 110, 101, 114, 97, 116, 101, 100, 32, 115, 101, 114, 118, 101, 114, 32, 117, 114, 108, 34, 125, 93, 44, 34, 115, 101, 99, 117, 114, 105, 116, 121, 34, 58, 91, 123, 34, 98, 101, 97, 114, 101, 114, 65, 117, 116, 104, 34, 58, 91, 93, 125, 93, 44, 34, 116, 97, 103, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 82, 101, 102, 114, 101, 115, 104, 32, 84, 111, 107, 101, 110, 32, 82, 101, 115, 111, 117, 114, 99, 101, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 80, 73, 32, 102, 111, 114, 32, 109, 97, 110, 97, 103, 105, 110, 103, 32, 114, 101, 102, 114, 101, 115, 104, 32, 116, 111, 107, 101, 110, 115, 34, 125, 44, 123, 34, 110, 97, 109, 101, 34, 58, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 80, 73, 115, 32, 114, 101, 108, 97, 116, 101, 100, 32, 116, 111, 32, 109, 97, 110, 97, 103, 105, 110, 103, 32, 117, 115, 101, 114, 115, 44, 32, 105, 110, 99, 108, 117, 100, 105, 110, 103, 32, 102, 101, 116, 99, 104, 105, 110, 103, 44, 32, 117, 112, 100, 97, 116, 105, 110, 103, 44, 32, 97, 110, 100, 32, 100, 101, 108, 101, 116, 105, 110, 103, 32, 117, 115, 101, 114, 32, 100, 97, 116, 97, 46, 34, 125, 93, 44, 34, 112, 97, 116, 104, 115, 34, 58, 123, 34, 47, 118, 49, 47, 97, 112, 105, 47, 117, 115, 101, 114, 47, 123, 117, 115, 101, 114, 73, 100, 125, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 71, 101, 116, 32, 117, 115, 101, 114, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 70, 101, 116, 99, 104, 32, 117, 115, 101, 114, 32, 98, 121, 32, 105, 100, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 85, 115, 101, 114, 66, 121, 73, 100, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 117, 115, 101, 114, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 44, 34, 112, 117, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 85, 112, 100, 97, 116, 101, 32, 117, 115, 101, 114, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 112, 100, 97, 116, 101, 32, 117, 115, 101, 114, 32, 98, 121, 32, 117, 115, 101, 114, 73, 100, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 117, 112, 100, 97, 116, 101, 85, 115, 101, 114, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 117, 115, 101, 114, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 85, 115, 101, 114, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 99, 111, 109, 109, 101, 110, 116, 47, 123, 99, 111, 109, 109, 101, 110, 116, 73, 100, 125, 34, 58, 123, 34, 112, 117, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 67, 111, 109, 109, 101, 110, 116, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 85, 112, 100, 97, 116, 101, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 117, 112, 100, 97, 116, 101, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 99, 111, 109, 109, 101, 110, 116, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 67, 111, 109, 109, 101, 110, 116, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 44, 34, 100, 101, 108, 101, 116, 101, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 67, 111, 109, 109, 101, 110, 116, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 83, 111, 102, 116, 32, 100, 101, 108, 101, 116, 101, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 115, 111, 102, 116, 68, 101, 108, 101, 116, 101, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 99, 111, 109, 109, 101, 110, 116, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 98, 108, 111, 103, 47, 123, 98, 108, 111, 103, 73, 100, 125, 34, 58, 123, 34, 112, 117, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 66, 108, 111, 103, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 85, 112, 100, 97, 116, 101, 32, 98, 108, 111, 103, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 117, 112, 100, 97, 116, 101, 95, 49, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 98, 108, 111, 103, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 66, 108, 111, 103, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 44, 34, 100, 101, 108, 101, 116, 101, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 66, 108, 111, 103, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 83, 111, 102, 116, 32, 100, 101, 108, 101, 116, 101, 32, 98, 108, 111, 103, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 115, 111, 102, 116, 68, 101, 108, 101, 116, 101, 95, 49, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 98, 108, 111, 103, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 117, 115, 101, 114, 47, 115, 97, 118, 101, 34, 58, 123, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 117, 115, 101, 114, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 83, 97, 118, 101, 32, 97, 32, 110, 101, 119, 32, 117, 115, 101, 114, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 99, 114, 101, 97, 116, 101, 85, 115, 101, 114, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 85, 115, 101, 114, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 117, 115, 101, 114, 47, 108, 111, 103, 105, 110, 34, 58, 123, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 85, 115, 101, 114, 32, 108, 111, 103, 32, 105, 110, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 115, 101, 114, 32, 108, 111, 103, 32, 105, 110, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 108, 111, 103, 105, 110, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 76, 111, 103, 105, 110, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 114, 101, 102, 114, 101, 115, 104, 45, 116, 111, 107, 101, 110, 34, 58, 123, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 82, 101, 102, 114, 101, 115, 104, 32, 84, 111, 107, 101, 110, 32, 82, 101, 115, 111, 117, 114, 99, 101, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 71, 101, 116, 32, 116, 111, 107, 101, 110, 115, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 70, 101, 116, 99, 104, 32, 116, 111, 107, 101, 110, 115, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 84, 111, 107, 101, 110, 115, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 82, 101, 102, 114, 101, 115, 104, 84, 111, 107, 101, 110, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 99, 111, 109, 109, 101, 110, 116, 47, 115, 97, 118, 101, 34, 58, 123, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 67, 111, 109, 109, 101, 110, 116, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 100, 100, 32, 97, 32, 99, 111, 109, 109, 101, 110, 116, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 115, 97, 118, 101, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 67, 111, 109, 109, 101, 110, 116, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 98, 108, 111, 103, 47, 115, 97, 118, 101, 34, 58, 123, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 66, 108, 111, 103, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 98, 108, 111, 103, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 100, 100, 32, 97, 32, 98, 108, 111, 103, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 115, 97, 118, 101, 95, 49, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 66, 108, 111, 103, 82, 101, 113, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 117, 115, 101, 114, 47, 123, 117, 115, 101, 114, 73, 100, 125, 47, 99, 104, 97, 110, 103, 101, 45, 112, 97, 115, 115, 119, 111, 114, 100, 34, 58, 123, 34, 112, 97, 116, 99, 104, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 67, 104, 97, 110, 103, 101, 32, 112, 97, 115, 115, 119, 111, 114, 100, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 67, 104, 97, 110, 103, 101, 32, 117, 115, 101, 114, 32, 112, 97, 115, 115, 119, 111, 114, 100, 46, 32, 79, 108, 100, 32, 112, 97, 115, 115, 119, 111, 114, 100, 32, 109, 117, 115, 116, 32, 109, 97, 116, 99, 104, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 99, 104, 97, 110, 103, 101, 80, 97, 115, 115, 119, 111, 114, 100, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 117, 115, 101, 114, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 113, 117, 101, 115, 116, 66, 111, 100, 121, 34, 58, 123, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 80, 97, 115, 115, 119, 111, 114, 100, 67, 104, 97, 110, 103, 101, 68, 116, 111, 34, 125, 125, 125, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 125, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 117, 115, 101, 114, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 85, 115, 101, 114, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 71, 101, 116, 32, 117, 115, 101, 114, 115, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 70, 101, 116, 99, 104, 32, 97, 32, 112, 97, 103, 105, 110, 97, 116, 101, 100, 32, 108, 105, 115, 116, 32, 111, 102, 32, 97, 108, 108, 32, 117, 115, 101, 114, 115, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 65, 108, 108, 85, 115, 101, 114, 115, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 112, 97, 103, 101, 78, 117, 109, 34, 44, 34, 105, 110, 34, 58, 34, 113, 117, 101, 114, 121, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 102, 97, 108, 115, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 51, 50, 34, 44, 34, 100, 101, 102, 97, 117, 108, 116, 34, 58, 48, 125, 125, 44, 123, 34, 110, 97, 109, 101, 34, 58, 34, 112, 97, 103, 101, 83, 105, 122, 101, 34, 44, 34, 105, 110, 34, 58, 34, 113, 117, 101, 114, 121, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 102, 97, 108, 115, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 51, 50, 34, 44, 34, 100, 101, 102, 97, 117, 108, 116, 34, 58, 53, 125, 125, 93, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 99, 111, 109, 109, 101, 110, 116, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 67, 111, 109, 109, 101, 110, 116, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 100, 100, 32, 97, 32, 99, 111, 109, 109, 101, 110, 116, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 65, 108, 108, 34, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 99, 111, 109, 109, 101, 110, 116, 47, 98, 108, 111, 103, 47, 123, 98, 108, 111, 103, 73, 100, 125, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 67, 111, 109, 109, 101, 110, 116, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 100, 100, 32, 97, 32, 99, 111, 109, 109, 101, 110, 116, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 65, 108, 108, 70, 111, 114, 66, 108, 111, 103, 73, 100, 34, 44, 34, 112, 97, 114, 97, 109, 101, 116, 101, 114, 115, 34, 58, 91, 123, 34, 110, 97, 109, 101, 34, 58, 34, 98, 108, 111, 103, 73, 100, 34, 44, 34, 105, 110, 34, 58, 34, 112, 97, 116, 104, 34, 44, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 116, 114, 117, 101, 44, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 125, 93, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 98, 108, 111, 103, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 66, 108, 111, 103, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 65, 100, 100, 32, 99, 111, 109, 109, 101, 110, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 65, 100, 100, 32, 97, 32, 99, 111, 109, 109, 101, 110, 116, 46, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 65, 108, 108, 95, 49, 34, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 44, 34, 47, 118, 49, 47, 97, 112, 105, 47, 98, 108, 111, 103, 47, 117, 115, 101, 114, 34, 58, 123, 34, 103, 101, 116, 34, 58, 123, 34, 116, 97, 103, 115, 34, 58, 91, 34, 66, 108, 111, 103, 32, 77, 97, 110, 97, 103, 101, 109, 101, 110, 116, 34, 93, 44, 34, 115, 117, 109, 109, 97, 114, 121, 34, 58, 34, 70, 101, 116, 99, 104, 32, 108, 111, 103, 103, 101, 100, 32, 105, 110, 32, 117, 115, 101, 114, 32, 98, 108, 111, 103, 32, 112, 111, 115, 116, 115, 34, 44, 34, 111, 112, 101, 114, 97, 116, 105, 111, 110, 73, 100, 34, 58, 34, 103, 101, 116, 66, 121, 76, 111, 103, 103, 101, 100, 73, 110, 85, 115, 101, 114, 34, 44, 34, 114, 101, 115, 112, 111, 110, 115, 101, 115, 34, 58, 123, 34, 52, 50, 50, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 85, 110, 112, 114, 111, 99, 101, 115, 115, 97, 98, 108, 101, 32, 69, 110, 116, 105, 116, 121, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 125, 125, 125, 125, 44, 34, 50, 48, 48, 34, 58, 123, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 79, 75, 34, 44, 34, 99, 111, 110, 116, 101, 110, 116, 34, 58, 123, 34, 42, 47, 42, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 34, 58, 123, 34, 36, 114, 101, 102, 34, 58, 34, 35, 47, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 47, 115, 99, 104, 101, 109, 97, 115, 47, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 125, 125, 125, 125, 125, 125, 125, 125, 44, 34, 99, 111, 109, 112, 111, 110, 101, 110, 116, 115, 34, 58, 123, 34, 115, 99, 104, 101, 109, 97, 115, 34, 58, 123, 34, 85, 115, 101, 114, 82, 101, 113, 68, 116, 111, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 112, 97, 115, 115, 119, 111, 114, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 101, 109, 97, 105, 108, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 102, 105, 114, 115, 116, 78, 97, 109, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 108, 97, 115, 116, 78, 97, 109, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 103, 101, 110, 100, 101, 114, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 101, 110, 117, 109, 34, 58, 91, 34, 77, 65, 76, 69, 34, 44, 34, 70, 69, 77, 65, 76, 69, 34, 44, 34, 79, 84, 72, 69, 82, 34, 93, 125, 44, 34, 100, 111, 98, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 100, 97, 116, 101, 45, 116, 105, 109, 101, 34, 125, 44, 34, 112, 104, 111, 110, 101, 78, 117, 109, 98, 101, 114, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 105, 115, 84, 119, 111, 70, 97, 69, 110, 97, 98, 108, 101, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 98, 111, 111, 108, 101, 97, 110, 34, 125, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 101, 110, 117, 109, 34, 58, 91, 34, 73, 78, 65, 67, 84, 73, 86, 69, 34, 44, 34, 65, 67, 84, 73, 86, 69, 34, 44, 34, 68, 69, 76, 69, 84, 69, 68, 34, 44, 34, 66, 65, 78, 78, 69, 68, 34, 93, 125, 44, 34, 114, 111, 108, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 101, 110, 117, 109, 34, 58, 91, 34, 85, 83, 69, 82, 34, 44, 34, 65, 68, 77, 73, 78, 34, 93, 125, 125, 125, 44, 34, 65, 112, 105, 82, 101, 115, 112, 111, 110, 115, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 83, 116, 97, 116, 117, 115, 32, 111, 102, 32, 114, 101, 113, 117, 101, 115, 116, 34, 125, 44, 34, 115, 116, 97, 116, 117, 115, 67, 111, 100, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 83, 116, 97, 116, 117, 115, 32, 99, 111, 100, 101, 32, 111, 102, 32, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 51, 50, 34, 125, 44, 34, 109, 101, 115, 115, 97, 103, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 77, 101, 115, 115, 97, 103, 101, 32, 114, 101, 116, 117, 114, 110, 101, 100, 32, 98, 121, 32, 114, 101, 113, 117, 101, 115, 116, 34, 125, 44, 34, 100, 101, 116, 97, 105, 108, 115, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 97, 114, 114, 97, 121, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 68, 101, 116, 97, 105, 108, 101, 100, 32, 105, 110, 102, 111, 114, 109, 97, 116, 105, 111, 110, 32, 114, 101, 116, 117, 114, 110, 101, 100, 32, 98, 121, 32, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 105, 116, 101, 109, 115, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 68, 101, 116, 97, 105, 108, 101, 100, 32, 105, 110, 102, 111, 114, 109, 97, 116, 105, 111, 110, 32, 114, 101, 116, 117, 114, 110, 101, 100, 32, 98, 121, 32, 114, 101, 113, 117, 101, 115, 116, 34, 125, 125, 44, 34, 101, 114, 114, 111, 114, 77, 101, 115, 115, 97, 103, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 68, 101, 116, 97, 105, 108, 101, 100, 32, 105, 110, 102, 111, 114, 109, 97, 116, 105, 111, 110, 32, 111, 102, 32, 116, 104, 101, 32, 101, 114, 114, 111, 114, 32, 105, 102, 32, 111, 99, 99, 117, 114, 114, 101, 100, 34, 125, 44, 34, 100, 97, 116, 97, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 100, 101, 115, 99, 114, 105, 112, 116, 105, 111, 110, 34, 58, 34, 68, 97, 116, 97, 32, 114, 101, 116, 117, 114, 110, 101, 100, 32, 98, 121, 32, 114, 101, 113, 117, 101, 115, 116, 34, 125, 125, 125, 44, 34, 67, 111, 109, 109, 101, 110, 116, 82, 101, 113, 68, 116, 111, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 98, 108, 111, 103, 73, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 105, 110, 116, 101, 103, 101, 114, 34, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 105, 110, 116, 54, 52, 34, 125, 44, 34, 99, 111, 109, 109, 101, 110, 116, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 125, 125, 44, 34, 66, 108, 111, 103, 82, 101, 113, 68, 116, 111, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 116, 105, 116, 108, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 115, 117, 98, 84, 105, 116, 108, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 112, 111, 115, 116, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 125, 125, 44, 34, 76, 111, 103, 105, 110, 82, 101, 113, 68, 116, 111, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 117, 115, 101, 114, 110, 97, 109, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 112, 97, 115, 115, 119, 111, 114, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 125, 125, 44, 34, 82, 101, 102, 114, 101, 115, 104, 84, 111, 107, 101, 110, 68, 116, 111, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 116, 111, 107, 101, 110, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 114, 101, 102, 114, 101, 115, 104, 84, 111, 107, 101, 110, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 125, 125, 44, 34, 80, 97, 115, 115, 119, 111, 114, 100, 67, 104, 97, 110, 103, 101, 68, 116, 111, 34, 58, 123, 34, 114, 101, 113, 117, 105, 114, 101, 100, 34, 58, 91, 34, 110, 101, 119, 80, 97, 115, 115, 119, 111, 114, 100, 34, 44, 34, 117, 115, 101, 114, 78, 97, 109, 101, 34, 93, 44, 34, 116, 121, 112, 101, 34, 58, 34, 111, 98, 106, 101, 99, 116, 34, 44, 34, 112, 114, 111, 112, 101, 114, 116, 105, 101, 115, 34, 58, 123, 34, 117, 115, 101, 114, 78, 97, 109, 101, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 111, 108, 100, 80, 97, 115, 115, 119, 111, 114, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 110, 101, 119, 80, 97, 115, 115, 119, 111, 114, 100, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 44, 34, 110, 101, 119, 80, 97, 115, 115, 119, 111, 114, 100, 65, 103, 97, 105, 110, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 115, 116, 114, 105, 110, 103, 34, 125, 125, 125, 125, 44, 34, 115, 101, 99, 117, 114, 105, 116, 121, 83, 99, 104, 101, 109, 101, 115, 34, 58, 123, 34, 98, 101, 97, 114, 101, 114, 65, 117, 116, 104, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 104, 116, 116, 112, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 98, 101, 97, 114, 101, 114, 65, 117, 116, 104, 34, 44, 34, 115, 99, 104, 101, 109, 101, 34, 58, 34, 98, 101, 97, 114, 101, 114, 34, 44, 34, 98, 101, 97, 114, 101, 114, 70, 111, 114, 109, 97, 116, 34, 58, 34, 74, 87, 84, 34, 125, 125, 125, 125}]
+2024-12-04T14:25:13.439+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:13.441+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:36.181+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/v1/api/user/login", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:36.183+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.UserResource#login(LoginReqDto, HttpServletRequest)
+2024-12-04T14:25:36.209+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.iambstha.tl_rest_api.dto.LoginReqDto@1cd905d8]
+2024-12-04T14:25:36.211+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.method.HandlerMethod             : Arguments: [com.iambstha.tl_rest_api.dto.LoginReqDto@1cd905d8, SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@678fc0a0]]
+2024-12-04T14:25:36.593+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:36.773+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:36.994+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    update
+        tl_users 
+    set
+        email=?,
+        first_name=?,
+        gender=?,
+        is_email_verified=?,
+        is_phone_verified=?,
+        is_two_fa_enabled=?,
+        last_login=?,
+        last_name=?,
+        last_password_changed_by=?,
+        last_password_changed_date=?,
+        modified_by=?,
+        modified_ts=?,
+        no_of_failed_logins=?,
+        password=?,
+        password_reset_code=?,
+        password_reset_code_ts=?,
+        phone_number=?,
+        profile_image=?,
+        role=?,
+        status=?,
+        username=? 
+    where
+        user_id=?
+2024-12-04T14:25:37.021+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:37.027+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:37.249+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:37.283+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] org.hibernate.SQL                        : 
+    insert 
+    into
+        tl_refresh_token
+        (created_by, created_ts, host_address, ip_address, refresh_token, token, user_agent, user_id, refresh_token_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-04T14:25:37.313+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:25:37.314+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=SUCCESS, statusCode=200, message=Logged in successfully., details=null, errorMessage=null, data=com.iambstha.tl_rest_api.dto.LoginTokenDto@79330ab1)]
+2024-12-04T14:25:37.317+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:37.321+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-12-04T14:25:55.196+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:25:55.209+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] c.i.t.security.JwtAuthorizationFilter    : Extracted roles: [ROLE_USER]
+2024-12-04T14:25:55.210+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/v1/api/blog", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:25:55.211+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.BlogResource#getAll()
+2024-12-04T14:25:55.211+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.method.HandlerMethod             : Arguments: []
+2024-12-04T14:25:55.248+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        b1_0.blog_id,
+        b1_0.created_by,
+        b1_0.created_ts,
+        b1_0.deleted,
+        b1_0.modified_by,
+        b1_0.modified_ts,
+        b1_0.post,
+        b1_0.sub_title,
+        b1_0.thumbnail,
+        b1_0.title,
+        b1_0.user_id 
+    from
+        tl_blogs b1_0
+2024-12-04T14:25:55.271+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        c1_0.blog_id,
+        c1_0.comment_id,
+        c1_0.comment,
+        c1_0.created_by,
+        c1_0.created_ts,
+        c1_0.deleted,
+        c1_0.modified_by,
+        c1_0.modified_ts,
+        c1_0.user_id 
+    from
+        tl_comments c1_0 
+    where
+        c1_0.blog_id=?
+2024-12-04T14:25:55.285+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:25:55.285+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=[BlogResDto(blogId=2, userId=1, title=string, subTitle=string, post=string, comments=[CommentResDto(userId=1, blogId=2, commentId=3, comment=string)])])]
+2024-12-04T14:25:55.290+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:25:55.292+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}
+2024-12-04T14:26:34.249+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.created_by,
+        u1_0.created_ts,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.is_email_verified,
+        u1_0.is_phone_verified,
+        u1_0.is_two_fa_enabled,
+        u1_0.last_login,
+        u1_0.last_name,
+        u1_0.last_password_changed_by,
+        u1_0.last_password_changed_date,
+        u1_0.modified_by,
+        u1_0.modified_ts,
+        u1_0.no_of_failed_logins,
+        u1_0.password,
+        u1_0.password_reset_code,
+        u1_0.password_reset_code_ts,
+        u1_0.phone_number,
+        u1_0.profile_image,
+        u1_0.role,
+        u1_0.status,
+        u1_0.username 
+    from
+        tl_users u1_0 
+    where
+        u1_0.username=?
+2024-12-04T14:26:34.306+05:45  INFO 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] c.i.t.security.JwtAuthorizationFilter    : Extracted roles: [ROLE_USER]
+2024-12-04T14:26:34.306+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : PUT "/v1/api/blog/2", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-12-04T14:26:34.307+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.iambstha.tl_rest_api.resource.BlogResource#update(Long, BlogReqDto)
+2024-12-04T14:26:34.311+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [BlogReqDto(blogId=null, userId=null, title=string updated, subTitle=string update, post=string updated)]
+2024-12-04T14:26:34.312+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.method.HandlerMethod             : Arguments: [2, BlogReqDto(blogId=null, userId=null, title=string updated, subTitle=string update, post=string updated)]
+2024-12-04T14:26:34.331+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        b1_0.blog_id,
+        b1_0.created_by,
+        b1_0.created_ts,
+        b1_0.deleted,
+        b1_0.modified_by,
+        b1_0.modified_ts,
+        b1_0.post,
+        b1_0.sub_title,
+        b1_0.thumbnail,
+        b1_0.title,
+        b1_0.user_id 
+    from
+        tl_blogs b1_0 
+    where
+        b1_0.blog_id=?
+2024-12-04T14:26:34.339+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        c1_0.blog_id,
+        c1_0.comment_id,
+        c1_0.comment,
+        c1_0.created_by,
+        c1_0.created_ts,
+        c1_0.deleted,
+        c1_0.modified_by,
+        c1_0.modified_ts,
+        c1_0.user_id 
+    from
+        tl_comments c1_0 
+    where
+        c1_0.blog_id=?
+2024-12-04T14:26:34.345+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        tl_blogs 
+    set
+        deleted=?,
+        modified_by=?,
+        modified_ts=?,
+        post=?,
+        sub_title=?,
+        thumbnail=?,
+        title=?,
+        user_id=? 
+    where
+        blog_id=?
+2024-12-04T14:26:34.355+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/xml, text/xml, application/*+xml]
+2024-12-04T14:26:34.355+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ApiResponse(status=null, statusCode=200, message=creation.success, details=null, errorMessage=null, data=BlogResDto(blogId=2, userId=1, title=string updated, subTitle=string update, post=string updated, comments=[CommentResDto(userId=1, blogId=2, commentId=3, comment=string)]))]
+2024-12-04T14:26:34.356+05:45 TRACE 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-12-04T14:26:34.357+05:45 DEBUG 9275 --- [tl-rest-api] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED, headers={masked}

@@ -8,6 +8,7 @@ import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.CommentMapper;
 import com.iambstha.tl_rest_api.repository.CommentRepository;
+import com.iambstha.tl_rest_api.util.GeneralUtil;
 import com.iambstha.tl_rest_api.util.UserUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -80,7 +81,19 @@ public class CommentService {
         }
     }
 
-    public boolean softdelete(Long commentId) {
+
+    public CommentResDto update(Long commentId, CommentReqDto commentReqDto) {
+
+        Comment existingComment = getCommentActualById(commentId);
+        commentMapper.updateCommentFromDto(commentReqDto, existingComment);
+        existingComment.setModifiedBy(UserUtil.getUserId());
+        existingComment.setModifiedTs(GeneralUtil.getCurrentTs());
+
+        return commentMapper.toDto(commentRepository.save(existingComment));
+
+    }
+
+    public boolean softDelete(Long commentId) {
         try{
 
             Comment comment = getCommentActualById(commentId);

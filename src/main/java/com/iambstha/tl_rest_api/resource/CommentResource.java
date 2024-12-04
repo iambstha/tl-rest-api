@@ -72,12 +72,25 @@ public class CommentResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
+    @Operation(summary = "Update comment")
+    @PutMapping("/{commentId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<ApiResponse> update(@PathVariable("commentId") Long commentId, @RequestBody CommentReqDto commentReqDto){
+        ApiResponse apiResponse = ApiResponse.builder()
+                .data(service.update(commentId, commentReqDto))
+                .statusCode(200)
+                .message("creation.success")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+    }
+
     @Operation(summary = "Soft delete comment")
     @DeleteMapping("/{commentId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> softDelete(@PathVariable("commentId") Long commentId){
         ApiResponse apiResponse = ApiResponse.builder()
-                .data(service.softdelete(commentId))
+                .data(service.softDelete(commentId))
                 .statusCode(200)
                 .message("creation.success")
                 .build();
