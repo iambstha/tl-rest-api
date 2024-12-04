@@ -8,6 +8,7 @@ public class BlogReqDto {
 
     @JsonIgnore
     private Long blogId;
+    @JsonIgnore
     private Long userId;
     private String title;
     private String subTitle;

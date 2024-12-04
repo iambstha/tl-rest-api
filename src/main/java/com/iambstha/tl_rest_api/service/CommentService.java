@@ -6,6 +6,7 @@ import com.iambstha.tl_rest_api.entity.Comment;
 import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.mapper.CommentMapper;
 import com.iambstha.tl_rest_api.repository.CommentRepository;
+import com.iambstha.tl_rest_api.util.UserUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,16 @@ public class CommentService {
     private final CommentRepository commentRepository;
 
     @Autowired
+    private final UserService userService;
+
+    @Autowired
     private final CommentMapper commentMapper;
 
     public CommentResDto save(CommentReqDto commentReqDto) {
 
         try{
             Comment comment = commentMapper.toEntity(commentReqDto);
+            comment.setUser(userService.getUserActualById(UserUtil.getUserId()));
             return commentMapper.toDto(commentRepository.save(comment));
         }catch (Exception e){
             throw new BadRequestException(e.getMessage());

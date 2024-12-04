@@ -45,19 +45,17 @@ public class UserService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     public UserResDto findByUsernameIgnoreCase(String username) {
-        // Fetch the user by username (case-insensitive) and throw an exception if not found
+
         User user = userRepository.findByUsernameIgnoreCase(username)
                 .orElseThrow(() -> new RecordNotFoundException("User " + username + " not found"));
 
-        // Map the User entity to a UserResDto and return it
         return userMapper.toDto(user);
     }
 
     public Page<UserResDto> getAllUsers(Pageable pageable) {
-        // Retrieve a paginated list of all users from the repository
+
         Page<User> users = userRepository.findAll(pageable);
 
-        // Convert the list of User entities to a list of UserResDto, and return a PageImpl
         return new PageImpl<>(
                 users.getContent().stream().map(userMapper::toDto).collect(Collectors.toList()),
                 pageable,
@@ -65,10 +63,15 @@ public class UserService {
     }
 
     public UserResDto getUserById(Long userId) {
-        // Fetch the user by ID and throw an exception if not found
         return userMapper.toDto(userRepository.findById(userId)
                 .orElseThrow(() ->
                         new RecordNotFoundException("User with user id " + userId + " not found")));
+    }
+
+    public User getUserActualById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new RecordNotFoundException("User with user id " + userId + " not found"));
     }
 
     public UserResDto createUser(UserReqDto userReqDto) {
@@ -78,7 +81,6 @@ public class UserService {
         user.setStatus(UserStatus.ACTIVE);
         user.setNoOfFailedLogins(0);
 
-        // Set the creator information if a user is logged in
         if (UserUtil.isUserLoggedIn()) {
             user.setCreatedBy(UserUtil.getUserId());
         }
@@ -89,57 +91,46 @@ public class UserService {
     }
 
     private String generateUniqueUsernameForUser() {
-        // Initial username generation
         String username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
 
-        // Check if the username already exists in the repository
         Optional<User> optionalUser = userRepository.findByUsername(username);
 
-        // Continue generating new usernames until a unique one is found
         while (optionalUser.isPresent()) {
             username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
             optionalUser = userRepository.findByUsername(username);
         }
 
-        // Return the unique username
         return username;
     }
 
     public LoginTokenDto login(LoginReqDto loginReqDto, HttpServletRequest request) {
-        // Retrieve the user by username from the repository
+
         Optional<User> optionalUser = userRepository.findByUsername(loginReqDto.getUsername());
 
-        // Throw an exception if the user is not found
         if (optionalUser.isEmpty()) {
             throw new RecordNotFoundException("User not found");
         }
 
         User user = optionalUser.get();
 
-        // Check if the user's status is active
         if (user.getStatus() != UserStatus.ACTIVE) {
             throw new NotAllowedException("User is either inactive, banned or deleted");
         }
 
-        // Validate the password against the stored hash
         if (!bCryptPasswordEncoder.matches(loginReqDto.getPassword(), user.getPassword())) {
             throw new NotAllowedException("Invalid credentials");
         }
 
-        // Update the user's last login timestamp and save the user
         user.setLastLogin(GeneralUtil.getCurrentTs());
         userRepository.save(user);
 
-        // Create additional claims for the JWT
         HashMap<String, Object> additionalClaims = new HashMap<>();
         additionalClaims.put("user_id", user.getUserId());
         additionalClaims.put("username", user.getUsername());
 
-        // Generate the JWT and refresh token
         String token = jwtUtil.generateToken(userLoadService.loadUserByUsername(loginReqDto.getUsername()), additionalClaims);
         String rToken = jwtUtil.generateRefreshToken(userLoadService.loadUserByUsername(loginReqDto.getUsername()), additionalClaims);
 
-        // Populate the LoginTokenDto with user and token information
         LoginTokenDto loginTokenDto = new LoginTokenDto();
         loginTokenDto.setUserId(user.getUserId());
         loginTokenDto.setToken(token);
@@ -148,10 +139,8 @@ public class UserService {
         loginTokenDto.setUsername(user.getUsername());
         loginTokenDto.setRefreshToken(rToken);
 
-        // Get the host address from the request header
         String hostAddress = request.getHeader("origin");
 
-        // Save the refresh token details to the repository
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(token);
         refreshToken.setRefreshToken(rToken);
@@ -163,62 +152,49 @@ public class UserService {
         refreshToken.setUserAgent(request.getHeader("User-Agent"));
         refreshTokenRepository.save(refreshToken);
 
-        // Return the populated LoginTokenDto
         return loginTokenDto;
     }
 
     public UserResDto changePassword(PasswordChangeDto passwordChangeDto, Long userId) {
-        // Retrieve the user by their ID from the repository
         User user = userRepository.findById(userId).orElseThrow(() ->
                 new RecordNotFoundException("User with user id " + userId + " not found.")
         );
 
-        // Check if the new password is provided and matches the confirmation password
         if (passwordChangeDto.getNewPassword() != null
                 && passwordChangeDto.getNewPassword().equals(passwordChangeDto.getNewPasswordAgain())) {
 
-            // Hash the new password and set it to the user
             String hashedPassword = BCrypt.hashpw(passwordChangeDto.getNewPassword(), BCrypt.gensalt(10));
             user.setPassword(hashedPassword);
 
-            // Update the user modification details
             user.setModifiedBy(UserUtil.getUserId());
             user.setModifiedTs(GeneralUtil.getCurrentTs());
 
-            // Save the updated user to the repository and return the DTO
             return userMapper.toDto(userRepository.save(user));
         }
 
-        // Return null if the passwords do not match or are not provided
         return null;
     }
 
     public UserResDto updateUser(Long userId, UserReqDto userReqDto) {
-        // Retrieve the existing user by their ID from the repository
         User existingUser = userRepository.findById(userId)
                 .orElseThrow(() ->
                         new RecordNotFoundException("User with id " + userId + " not found."));
 
-        // Update the existing user entity with the data from the DTO
         userMapper.updateUserFromDto(userReqDto, existingUser);
 
-        // Update the password if provided in the DTO
         userMapper.updatePassword(existingUser, userReqDto.getPassword());
 
-        // Check if the user role is being updated
         if (!existingUser.getRole().equals(userReqDto.getRole())) {
-            // Ensure only admins are allowed to update the role
+
             if (!UserUtil.isAdmin()) {
                 throw new NotAllowedException("Only admins can update the role");
             }
             existingUser.setRole(userReqDto.getRole());
         }
 
-        // Update the user modification details
         existingUser.setModifiedBy(UserUtil.getUserId());
         existingUser.setModifiedTs(GeneralUtil.getCurrentTs());
 
-        // Save the updated user back to the repository and return the DTO
         return userMapper.toDto(userRepository.save(existingUser));
     }
 
