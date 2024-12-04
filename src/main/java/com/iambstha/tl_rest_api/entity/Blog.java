@@ -40,6 +40,11 @@ public class Blog extends BaseEntity {
     @JsonIgnore
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "document_id")
+    @JsonIgnore
+    private Document document;
+
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
