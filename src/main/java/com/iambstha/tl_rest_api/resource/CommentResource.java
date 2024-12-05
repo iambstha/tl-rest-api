@@ -40,7 +40,7 @@ public class CommentResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.save(commentReqDto))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -53,7 +53,7 @@ public class CommentResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAll())
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -66,7 +66,7 @@ public class CommentResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAllForBlogId(blogId))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -79,7 +79,7 @@ public class CommentResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.update(commentId, commentReqDto))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -92,7 +92,7 @@ public class CommentResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.softDelete(commentId))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("delete_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);

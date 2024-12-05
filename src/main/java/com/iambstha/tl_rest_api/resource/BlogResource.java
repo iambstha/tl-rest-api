@@ -58,7 +58,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.save(blogReqDto))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -71,7 +71,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAll())
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -84,7 +84,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getLoggedInUserBlogs())
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -97,7 +97,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getBlogActualById(blogId))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -111,7 +111,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.update(blogId, blogReqDto))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -125,7 +125,7 @@ public class BlogResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.softDelete(blogId))
                 .statusCode(200)
-                .message("creation.success")
+                .message(messageSource.getMessage("delete_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);

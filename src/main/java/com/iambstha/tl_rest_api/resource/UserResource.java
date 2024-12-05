@@ -60,8 +60,9 @@ public class UserResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.getAllUsers(pageable))
                 .statusCode(200)
-                .message("fetch.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
+
 
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
@@ -75,7 +76,7 @@ public class UserResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.getUserById(userId))
                 .statusCode(200)
-                .message("fetch.success")
+                .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
@@ -88,7 +89,7 @@ public class UserResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.createUser(userReqDto))
                 .statusCode(201)
-                .message("creation.success")
+                .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
@@ -105,15 +106,15 @@ public class UserResource {
                 ApiResponse apiResponse = ApiResponse.builder()
                         .data(userService.login(loginReqDto, request))
                         .statusCode(200)
-                        .message("login.success")
+                        .message(messageSource.getMessage("login_success", null, locale))
                         .build();
 
                 return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
             } else {
-                throw new AuthException("Username or password mismatch");
+                throw new AuthException(messageSource.getMessage("password_not_matched", null, locale));
             }
         } catch (Exception e) {
-            throw new AuthException("Unauthorized access");
+            throw new AuthException(messageSource.getMessage("login_failed", null, locale));
         }
 
     }
@@ -127,7 +128,7 @@ public class UserResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.updateUser(userId, userReqDto))
                 .statusCode(200)
-                .message("update.success")
+                .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
@@ -144,7 +145,7 @@ public class UserResource {
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.changePassword(passwordChangeDto, userId))
                 .statusCode(200)
-                .message("update.success")
+                .message(messageSource.getMessage("password_change_success", null, locale))
                 .build();
 
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
