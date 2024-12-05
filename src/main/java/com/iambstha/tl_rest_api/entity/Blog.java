@@ -25,10 +25,6 @@ public class Blog extends BaseEntity {
     @Column(name = "sub_title", columnDefinition = "TEXT")
     private String subTitle;
 
-    @Lob
-    @Column(name = "thumbnail")
-    private byte[] thumbnail;
-
     @Column(name = "post", columnDefinition = "TEXT")
     private String post;
 

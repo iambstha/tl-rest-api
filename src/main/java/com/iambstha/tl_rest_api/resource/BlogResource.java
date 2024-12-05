@@ -107,7 +107,7 @@ public class BlogResource {
     @Operation(summary = "Update blog")
     @PutMapping("/{blogId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<ApiResponse> update(@PathVariable("blogId") Long blogId, @RequestBody BlogReqDto blogReqDto){
+    public ResponseEntity<ApiResponse> update(@PathVariable("blogId") Long blogId, @ModelAttribute BlogReqDto blogReqDto){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.update(blogId, blogReqDto))
                 .statusCode(200)
