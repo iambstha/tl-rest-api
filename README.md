@@ -54,7 +54,7 @@ The application swagger UI is available at `http://localhost:8080/swagger-ui/ind
 1. Import the Postman collection using the link provided.
 2. Make sure your local server is running.
 3. Use Postman to send requests to the endpoints and verify the responses.
-4. First register a user and get the username, then log in to get the access token that can be used to send requests in various endpoints. 
+4. First register a user, then log in to get the access token that can be used to send requests in various endpoints. Remember, the jwt token generated can be set as variable in the postman collection, so that each request will be populated with the bearer token in the header.
 
 ## Feedback
 If you encounter any issues or have suggestions for improvement, feel free to open an issue in this repository or contact me directly.
