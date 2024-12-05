@@ -21,12 +21,22 @@ git clone https://github.com/iambstha/tl-rest-api.git
 cd tl-rest-api
 ```
 
-### 2. Build and Run the Project
+### 2. Build and Run the Project without docker
 Use Maven to build and run the project locally:
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
+Note: Make sure that the spring profile is set to 'test' in application.properties file. Also, postgres instance should be available with the required database for a configured user
+
+
+### 3. Build and Run the Project with docker
+Use Docker to build and run the project locally:
+```bash
+docker compose build
+docker compose up
+```
+Note: Make sure that the spring profile is set to 'prod' in application.properties file
 
 The application will start on `http://localhost:8080` by default.
 
