@@ -21,16 +21,7 @@ git clone https://github.com/iambstha/tl-rest-api.git
 cd tl-rest-api
 ```
 
-### 2. Build and Run the Project without docker
-Use Maven to build and run the project locally:
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-Note: Make sure that the spring profile is set to 'test' in application.properties file. Also, postgres instance should be available with the required database for a configured user
-
-
-### 3. Build and Run the Project with docker
+### 2. Build and Run the Project with Docker
 Use Docker to build and run the project locally:
 ```bash
 docker compose build
@@ -38,14 +29,28 @@ docker compose up
 ```
 Note: Make sure that the spring profile is set to 'prod' in application.properties file
 
+
+### 3. Build and Run the Project without Docker
+Use Maven to build and run the project locally:
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+Note: Make sure that the spring profile is set to 'test' in application.properties file. 
+Also, postgres instance should be available with the required database setup for a configured user.
+
 The application will start on `http://localhost:8080` by default.
 
 ### 3. Test the APIs
-The REST API endpoints are available for testing in Postman. You can find all the requests organized in a Postman collection at the following link:
 
-[Postman Collection URL](https://drive.google.com/file/d/1Gt78l5SyPRmzS5z-kW4Sr7RiJxMqtNP2/view?usp=sharing)
+#### A. The REST API endpoints are also available for testing in Postman. You can find all the requests organized in a Postman collection at the following link:
 
-#### Steps to Test:
+[Postman Collection URL](https://drive.google.com/file/d/1XEzJpFu9JGUQlauEE5KDQ6AfXJtjxywU/view?usp=sharing)
+
+#### B. The REST API endpoints are also available for testing in Swagger UI. 
+The application swagger UI is available at `http://localhost:8080/swagger-ui/index.html#/` by default.
+
+#### Steps to Test with Postman:
 1. Import the Postman collection using the link provided.
 2. Make sure your local server is running.
 3. Use Postman to send requests to the endpoints and verify the responses.

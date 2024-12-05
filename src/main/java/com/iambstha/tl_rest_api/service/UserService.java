@@ -5,6 +5,7 @@ import com.iambstha.tl_rest_api.dto.*;
 import com.iambstha.tl_rest_api.entity.RefreshToken;
 import com.iambstha.tl_rest_api.entity.User;
 import com.iambstha.tl_rest_api.entity.enums.user.UserStatus;
+import com.iambstha.tl_rest_api.exception.BadRequestException;
 import com.iambstha.tl_rest_api.exception.NotAllowedException;
 import com.iambstha.tl_rest_api.exception.RecordNotFoundException;
 import com.iambstha.tl_rest_api.mapper.UserMapper;
@@ -76,7 +77,16 @@ public class UserService {
 
     public UserResDto createUser(UserReqDto userReqDto) {
         User user = userMapper.toEntityFromReq(userReqDto);
-        user.setUsername(generateUniqueUsernameForUser());
+        String username = userReqDto.getUsername();
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        if(optionalUser.isPresent()) {
+            throw new BadRequestException("Username " + username + " already taken. Please choose a different username");
+        }
+
+//        Uncomment this if username is supposed to be auto generated
+//        user.setUsername(generateUniqueUsernameForUser());
+        user.setUsername(username);
         user.setPassword(bCryptPasswordEncoder.encode(userReqDto.getPassword()));
         user.setStatus(UserStatus.ACTIVE);
         user.setNoOfFailedLogins(0);
@@ -88,19 +98,6 @@ public class UserService {
         User savedUser = userRepository.save(user);
 
         return userMapper.toDto(savedUser);
-    }
-
-    private String generateUniqueUsernameForUser() {
-        String username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
-
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-
-        while (optionalUser.isPresent()) {
-            username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
-            optionalUser = userRepository.findByUsername(username);
-        }
-
-        return username;
     }
 
     public LoginTokenDto login(LoginReqDto loginReqDto, HttpServletRequest request) {
@@ -196,6 +193,20 @@ public class UserService {
         existingUser.setModifiedTs(GeneralUtil.getCurrentTs());
 
         return userMapper.toDto(userRepository.save(existingUser));
+    }
+
+
+    private String generateUniqueUsernameForUser() {
+        String username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
+
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        while (optionalUser.isPresent()) {
+            username = AppConstant.USERNAME_PREFIX + TokenGeneratorUtil.generateNumericOtp(6);
+            optionalUser = userRepository.findByUsername(username);
+        }
+
+        return username;
     }
 
 
