@@ -16,6 +16,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class UserReqDto {
 
+    private String username;
     private String password;
     private String email;
     private String firstName;

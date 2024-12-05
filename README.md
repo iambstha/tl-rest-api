@@ -45,7 +45,7 @@ The application will start on `http://localhost:8080` by default.
 
 #### A. The REST API endpoints are also available for testing in Postman. You can find all the requests organized in a Postman collection at the following link:
 
-[Postman Collection URL](https://drive.google.com/file/d/1Gt78l5SyPRmzS5z-kW4Sr7RiJxMqtNP2/view?usp=sharing)
+[Postman Collection URL](https://drive.google.com/file/d/1XEzJpFu9JGUQlauEE5KDQ6AfXJtjxywU/view?usp=sharing)
 
 #### B. The REST API endpoints are also available for testing in Swagger UI. 
 The application swagger UI is available at `http://localhost:8080/swagger-ui/index.html#/` by default.
