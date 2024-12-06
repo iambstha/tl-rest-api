@@ -64,7 +64,7 @@ public class BlogResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
-    @Operation(summary = "Add comment", description = "Add a comment.")
+    @Operation(summary = "Fetch blogs", description = "Fetch all blogs")
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> getAll(){

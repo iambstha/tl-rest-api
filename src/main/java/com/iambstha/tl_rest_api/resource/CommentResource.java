@@ -33,7 +33,7 @@ public class CommentResource {
     private final Locale locale = LocaleContextHolder.getLocale();
 
 
-    @Operation(summary = "Add comment", description = "Add a comment.")
+    @Operation(summary = "Add a comment", description = "Add a comment in a particular blog post.")
     @PostMapping("/save")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> save(@RequestBody CommentReqDto commentReqDto){
@@ -46,7 +46,7 @@ public class CommentResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
-    @Operation(summary = "Add comment", description = "Add a comment.")
+    @Operation(summary = "Fetch comments", description = "Fetch all comments.")
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> getAll(){
@@ -59,7 +59,7 @@ public class CommentResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
     }
 
-    @Operation(summary = "Add comment", description = "Add a comment.")
+    @Operation(summary = "Fetch comments", description = "Fetch comments of a particular blog.")
     @GetMapping("/blog/{blogId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ApiResponse> getAllForBlogId(@PathVariable("blogId") Long blogId){
