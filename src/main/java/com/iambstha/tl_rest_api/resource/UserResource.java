@@ -1,5 +1,6 @@
 package com.iambstha.tl_rest_api.resource;
 
+import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.*;
 import com.iambstha.tl_rest_api.exception.AuthException;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +61,6 @@ public class UserResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.getAllUsers(pageable))
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -75,7 +76,6 @@ public class UserResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.getUserById(userId))
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -88,7 +88,8 @@ public class UserResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.createUser(userReqDto))
-                .statusCode(201)
+                .statusCode(Response.SC_CREATED)
+                .status(StatusConstants.CREATED)
                 .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
@@ -105,7 +106,6 @@ public class UserResource {
             if (authentication.isAuthenticated()) {
                 ApiResponse apiResponse = ApiResponse.builder()
                         .data(userService.login(loginReqDto, request))
-                        .statusCode(200)
                         .message(messageSource.getMessage("login_success", null, locale))
                         .build();
 
@@ -127,7 +127,7 @@ public class UserResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.updateUser(userId, userReqDto))
-                .statusCode(200)
+                .status(StatusConstants.UPDATED)
                 .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
@@ -144,7 +144,7 @@ public class UserResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(userService.changePassword(passwordChangeDto, userId))
-                .statusCode(200)
+                .status(StatusConstants.UPDATED)
                 .message(messageSource.getMessage("password_change_success", null, locale))
                 .build();
 

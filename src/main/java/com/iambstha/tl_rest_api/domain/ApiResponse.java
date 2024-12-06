@@ -1,10 +1,13 @@
 package com.iambstha.tl_rest_api.domain;
 
+import com.iambstha.tl_rest_api.constant.StatusConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.connector.Response;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -47,6 +50,13 @@ public class ApiResponse {
         this.status = status;
         this.message = message;
         this.details = details;
+    }
+
+    public static ApiResponseBuilder builder() {
+        ApiResponseBuilder builder = new ApiResponseBuilder();
+        builder.status(StatusConstants.OK);
+        builder.statusCode(Response.SC_OK);
+        return builder;
     }
 
 }

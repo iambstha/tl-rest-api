@@ -1,5 +1,6 @@
 package com.iambstha.tl_rest_api.resource;
 
+import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.RefreshTokenDto;
 import com.iambstha.tl_rest_api.service.refreshToken.RefreshTokenService;
@@ -7,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -44,7 +46,8 @@ public class RefreshTokenResource {
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.generateRefreshTokenAndToken(refreshTokenDto, request))
-                .statusCode(200)
+                .statusCode(Response.SC_CREATED)
+                .status(StatusConstants.CREATED)
                 .message(messageSource.getMessage("refresh_token_generation_success", null, locale))
                 .build();
 
