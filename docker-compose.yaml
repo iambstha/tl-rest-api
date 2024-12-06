@@ -19,12 +19,33 @@ services:
       retries: 5
       start_period: 10s
 
+  mysql:
+    image: mysql
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tl_db
+      MYSQL_USER: bishal
+      MYSQL_PASSWORD: shrestha
+    ports:
+      - "3305:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql-config:/etc/mysql/conf.d
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -u bishal -pshrestha" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   tl-rest-api:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tl_db
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tl_db
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tl_db
       SPRING_DATASOURCE_USERNAME: bishal
       SPRING_DATASOURCE_PASSWORD: shrestha
     ports:
@@ -32,8 +53,11 @@ services:
     volumes:
       - ./src/main/resources/keys:/app/keys
     depends_on:
-      postgres:
+      mysql:
         condition: service_healthy
+#      postgres:
+#        condition: service_healthy
 
 volumes:
   postgres_data:
+  db_data:

@@ -2,8 +2,7 @@ package com.iambstha.tl_rest_api.resource;
 
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.RefreshTokenDto;
-import com.iambstha.tl_rest_api.security.JwtUtil;
-import com.iambstha.tl_rest_api.service.RefreshTokenService;
+import com.iambstha.tl_rest_api.service.refreshToken.RefreshTokenService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

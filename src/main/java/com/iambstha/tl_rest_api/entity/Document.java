@@ -36,7 +36,7 @@ public class Document extends BaseEntity {
     private Boolean deleted = Boolean.FALSE;
 
     @Lob
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "MEDIUMBLOB")
     private byte[] content;
 
 
