@@ -22,12 +22,13 @@ cd tl-rest-api
 ```
 
 ### 2. Build and Run the Project with Docker
-Use Docker to build and run the project locally (postgres container and database will be automatically created):
+Use Docker to build and run the project locally (postgres/mysql container and database will be automatically created):
 ```bash
 docker compose build
 docker compose up
 ```
-Note: Make sure that the spring profile is set to 'prod' in application.properties file
+Note: Make sure that the spring profile is set to 'prod' in application.properties file.
+Also make necessary changes in application-prod.properties for postgres or mysql support. 
 
 
 ### 3. Build and Run the Project without Docker
@@ -37,7 +38,7 @@ mvn clean install
 mvn spring-boot:run
 ```
 Note: Make sure that the spring profile is set to 'test' in application.properties file. 
-Also, postgres instance should be available with the required database setup for a configured user.
+Also, postgres/mysql instance should be available with the required database setup for a configured user.
 
 The application will start on `http://localhost:8080` by default.
 
