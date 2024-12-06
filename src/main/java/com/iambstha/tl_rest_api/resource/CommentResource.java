@@ -1,11 +1,13 @@
 package com.iambstha.tl_rest_api.resource;
 
+import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.CommentReqDto;
 import com.iambstha.tl_rest_api.service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -39,7 +41,8 @@ public class CommentResource {
     public ResponseEntity<ApiResponse> save(@RequestBody CommentReqDto commentReqDto){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.save(commentReqDto))
-                .statusCode(200)
+                .statusCode(Response.SC_CREATED)
+                .status(StatusConstants.CREATED)
                 .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
@@ -52,7 +55,6 @@ public class CommentResource {
     public ResponseEntity<ApiResponse> getAll(){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAll())
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -65,7 +67,6 @@ public class CommentResource {
     public ResponseEntity<ApiResponse> getAllForBlogId(@PathVariable("blogId") Long blogId){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAllForBlogId(blogId))
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -78,7 +79,7 @@ public class CommentResource {
     public ResponseEntity<ApiResponse> update(@PathVariable("commentId") Long commentId, @RequestBody CommentReqDto commentReqDto){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.update(commentId, commentReqDto))
-                .statusCode(200)
+                .status(StatusConstants.UPDATED)
                 .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
@@ -91,7 +92,7 @@ public class CommentResource {
     public ResponseEntity<ApiResponse> softDelete(@PathVariable("commentId") Long commentId){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.softDelete(commentId))
-                .statusCode(200)
+                .status(StatusConstants.DELETED)
                 .message(messageSource.getMessage("delete_success", null, locale))
                 .build();
 

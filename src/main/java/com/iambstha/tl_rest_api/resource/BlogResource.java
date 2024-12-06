@@ -1,5 +1,6 @@
 package com.iambstha.tl_rest_api.resource;
 
+import com.iambstha.tl_rest_api.constant.StatusConstants;
 import com.iambstha.tl_rest_api.domain.ApiResponse;
 import com.iambstha.tl_rest_api.dto.BlogReqDto;
 import com.iambstha.tl_rest_api.dto.DocumentResDto;
@@ -7,6 +8,7 @@ import com.iambstha.tl_rest_api.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -57,7 +59,8 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> save(@ModelAttribute BlogReqDto blogReqDto){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.save(blogReqDto))
-                .statusCode(200)
+                .statusCode(Response.SC_CREATED)
+                .status(StatusConstants.CREATED)
                 .message(messageSource.getMessage("creation_success", null, locale))
                 .build();
 
@@ -70,7 +73,6 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> getAll(){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getAll())
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -83,7 +85,6 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> getByLoggedInUser(){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getLoggedInUserBlogs())
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -96,7 +97,6 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> getByBlogId(@PathVariable("blogId") Long blogId){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.getBlogActualById(blogId))
-                .statusCode(200)
                 .message(messageSource.getMessage("fetch_success", null, locale))
                 .build();
 
@@ -110,7 +110,7 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> update(@PathVariable("blogId") Long blogId, @ModelAttribute BlogReqDto blogReqDto){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.update(blogId, blogReqDto))
-                .statusCode(200)
+                .status(StatusConstants.UPDATED)
                 .message(messageSource.getMessage("update_success", null, locale))
                 .build();
 
@@ -124,7 +124,7 @@ public class BlogResource {
     public ResponseEntity<ApiResponse> softDelete(@PathVariable("blogId") Long blogId){
         ApiResponse apiResponse = ApiResponse.builder()
                 .data(service.softDelete(blogId))
-                .statusCode(200)
+                .status(StatusConstants.DELETED)
                 .message(messageSource.getMessage("delete_success", null, locale))
                 .build();
 
