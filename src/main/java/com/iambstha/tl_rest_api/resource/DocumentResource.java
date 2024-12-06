@@ -40,7 +40,7 @@ public class DocumentResource {
     @Autowired
     private final DocumentService service;
 
-    @Operation(summary = "Fetch blog post by id")
+    @Operation(summary = "Download blog post thumbnail by id")
     @GetMapping("/{documentId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<Resource> downloadDocumentById(@PathVariable("documentId") Long documentId) throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {

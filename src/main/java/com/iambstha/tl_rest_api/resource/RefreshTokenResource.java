@@ -36,7 +36,7 @@ public class RefreshTokenResource {
     private final Locale locale = LocaleContextHolder.getLocale();
 
     @PostMapping
-    @Operation(summary = "Get tokens", description = "Fetch tokens")
+    @Operation(summary = "Fetch token", description = "Generate refresh token")
     public ResponseEntity<ApiResponse> getTokens(
             @RequestBody RefreshTokenDto refreshTokenDto,
             HttpServletRequest request
